@@ -3,9 +3,11 @@ use std::{fs, path::Path};
 fn main() {
     let inputs = read_inputs("input.txt");
 
+    let new_arr: Vec<i16> = (0..inputs.len() - 2).map(|i| inputs.iter().skip(i).take(3).sum()).collect();
+
     let mut increased = 0;
 
-    inputs.iter().reduce(|last, new| {
+    new_arr.iter().reduce(|last, new| {
         if new > last {
             increased += 1;
         }
